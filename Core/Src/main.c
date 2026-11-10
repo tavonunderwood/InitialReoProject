@@ -146,6 +146,7 @@ int main(void)
 	                        HAL_MAX_DELAY);
 
 	      //Resets Receive
+	      //
 	      HAL_UART_Receive_IT(&huart2, rxData, RX_SIZE);
 	  }
     /* USER CODE END WHILE */
