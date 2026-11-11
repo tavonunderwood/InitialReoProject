@@ -110,12 +110,16 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_UART_Receive_IT(&huart2, rxData, 10);
 
+	void clearScreen(){
+		HAL_UART_Transmit(&huart1, "\033[2J\033[H", strlen((char*) "\033[2J\033[H"), 10);
+	}
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  //From interrupt
 	  if (dataReady)
 	  {
 		  //Resets dataReady
@@ -148,6 +152,8 @@ int main(void)
 	      //Resets Receive
 	      //
 	      HAL_UART_Receive_IT(&huart2, rxData, RX_SIZE);
+
+	      clearScreen();
 	  }
     /* USER CODE END WHILE */
 
